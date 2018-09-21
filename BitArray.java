@@ -1,50 +1,51 @@
 public class BitArray {
 
 	private int bitarray[];
+	//just add comment for test)
 
-	public void generate(int l, int k) { // Заполнение массива на k ячеек,
-											// начиная с L-го
+	public void generate(int l, int k) { // Г‡Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ Г¬Г Г±Г±ГЁГўГ  Г­Г  k ГїГ·ГҐГҐГЄ,
+											// Г­Г Г·ГЁГ­Г Гї Г± L-ГЈГ®
 
 		for (int i = l; i < (k + l); i++) {
-			int j = 1 + (int) (Math.random() * 128); // генерим произвольное
-														// чиселко
-			int num = shifttobit(j); // "переводим" его в двоичное
+			int j = 1 + (int) (Math.random() * 128); // ГЈГҐГ­ГҐГ°ГЁГ¬ ГЇГ°Г®ГЁГ§ГўГ®Г«ГјГ­Г®ГҐ
+														// Г·ГЁГ±ГҐГ«ГЄГ®
+			int num = shifttobit(j); // "ГЇГҐГ°ГҐГўГ®Г¤ГЁГ¬" ГҐГЈГ® Гў Г¤ГўГ®ГЁГ·Г­Г®ГҐ
 			bitarray[i] = num;
 		}
 	}
 
-	public void insert(int i, int n) { // Записать на i-ое место число n
-		int j = n; // Проверка на бинарность
+	public void insert(int i, int n) { // Г‡Г ГЇГЁГ±Г ГІГј Г­Г  i-Г®ГҐ Г¬ГҐГ±ГІГ® Г·ГЁГ±Г«Г® n
+		int j = n; // ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЎГЁГ­Г Г°Г­Г®Г±ГІГј
 		int ost = 0;
 		while (j > 1 && (ost == 0 || ost == 1)) {
 			ost = j % 10;
 			j = j / 10;
 		}
 
-		if (ost == 0 || ost == 1) { // Если число бинарное, то записать
+		if (ost == 0 || ost == 1) { // Г…Г±Г«ГЁ Г·ГЁГ±Г«Г® ГЎГЁГ­Г Г°Г­Г®ГҐ, ГІГ® Г§Г ГЇГЁГ±Г ГІГј
 			bitarray[i] = n;
 		} else {
 			System.out.println("Error! Your's number " + n + " is not binary");
 		}
 	}
 
-	public int takeout(int i) { // Выдать i-ое значение массива
+	public int takeout(int i) { // Г‚Г»Г¤Г ГІГј i-Г®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г¬Г Г±Г±ГЁГўГ 
 		return bitarray[i];
 	}
 
-	public BitArray(int i) { // Выделение памяти под массив
+	public BitArray(int i) { // Г‚Г»Г¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ ГЇГ®Г¤ Г¬Г Г±Г±ГЁГў
 		bitarray = new int[i];
 	}
 
-	public void print(int i, int k) { // Вывод k значений из массива, начиная с
-										// i-го
+	public void print(int i, int k) { // Г‚Г»ГўГ®Г¤ k Г§Г­Г Г·ГҐГ­ГЁГ© ГЁГ§ Г¬Г Г±Г±ГЁГўГ , Г­Г Г·ГЁГ­Г Гї Г±
+										// i-ГЈГ®
 		for (int j = i; j < (k + i); j++) {
 			System.out.println(bitarray[j]);
 		}
 	}
 
-	public void printindec(int i, int k) { // Вывод k значений из массива,
-											// начиная с i-го
+	public void printindec(int i, int k) { // Г‚Г»ГўГ®Г¤ k Г§Г­Г Г·ГҐГ­ГЁГ© ГЁГ§ Г¬Г Г±Г±ГЁГўГ ,
+											// Г­Г Г·ГЁГ­Г Гї Г± i-ГЈГ®
 		int dec;
 		for (int j = i; j < (k + i); j++) {
 			dec = shifttodec(bitarray[j]);
@@ -52,30 +53,30 @@ public class BitArray {
 		}
 	}
 
-	public int sum(int i, int j) { // Возвращает сумму двух элементов массива с
-									// номерами i и j
+	public int sum(int i, int j) { // Г‚Г®Г§ГўГ°Г Г№Г ГҐГІ Г±ГіГ¬Г¬Гі Г¤ГўГіГµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¬Г Г±Г±ГЁГўГ  Г±
+									// Г­Г®Г¬ГҐГ°Г Г¬ГЁ i ГЁ j
 		int s1 = shifttodec(bitarray[i]);
 		int s2 = shifttodec(bitarray[j]);
 		return shifttobit(s1 + s2);
 	}
 
-	public int multy(int i, int j) { // Возвращает сумму двух элементов массива
-										// с номерами i и j
+	public int multy(int i, int j) { // Г‚Г®Г§ГўГ°Г Г№Г ГҐГІ Г±ГіГ¬Г¬Гі Г¤ГўГіГµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¬Г Г±Г±ГЁГўГ 
+										// Г± Г­Г®Г¬ГҐГ°Г Г¬ГЁ i ГЁ j
 		int s1 = shifttodec(bitarray[i]);
 		int s2 = shifttodec(bitarray[j]);
 		return shifttobit(s1 * s2);
 	}
 
-	public int div(int i, int j) { // Возвращает сумму двух элементов массива с
-									// номерами i и j
+	public int div(int i, int j) { // Г‚Г®Г§ГўГ°Г Г№Г ГҐГІ Г±ГіГ¬Г¬Гі Г¤ГўГіГµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¬Г Г±Г±ГЁГўГ  Г±
+									// Г­Г®Г¬ГҐГ°Г Г¬ГЁ i ГЁ j
 		int s1 = shifttodec(bitarray[i]);
 		int s2 = shifttodec(bitarray[j]);
 		return shifttobit(s1 / s2);
 	}
 
-	private int shifttobit(int j) { // Перевод в двоичную систему
-		int m = 1; // Множитель десятков
-		int res = 0; // Результат
+	private int shifttobit(int j) { // ГЏГҐГ°ГҐГўГ®Г¤ Гў Г¤ГўГ®ГЁГ·Г­ГіГѕ Г±ГЁГ±ГІГҐГ¬Гі
+		int m = 1; // ГЊГ­Г®Г¦ГЁГІГҐГ«Гј Г¤ГҐГ±ГїГІГЄГ®Гў
+		int res = 0; // ГђГҐГ§ГіГ«ГјГІГ ГІ
 		while (j != 0) {
 			res = res + (j % 2) * m;
 			m = m * 10;
@@ -83,14 +84,14 @@ public class BitArray {
 		}
 
 		if (res < 0)
-			return -1; // Проверка что не выходит за пределы
+			return -1; // ГЏГ°Г®ГўГҐГ°ГЄГ  Г·ГІГ® Г­ГҐ ГўГ»ГµГ®Г¤ГЁГІ Г§Г  ГЇГ°ГҐГ¤ГҐГ«Г»
 		return res;
 	}
 
-	private int shifttodec(int j) { // Перевод в десятичную систему
+	private int shifttodec(int j) { // ГЏГҐГ°ГҐГўГ®Г¤ Гў Г¤ГҐГ±ГїГІГЁГ·Г­ГіГѕ Г±ГЁГ±ГІГҐГ¬Гі
 
-		int ost; // Остаток от деления
-		int m = 0; // Множитель степени
+		int ost; // ГЋГ±ГІГ ГІГ®ГЄ Г®ГІ Г¤ГҐГ«ГҐГ­ГЁГї
+		int m = 0; // ГЊГ­Г®Г¦ГЁГІГҐГ«Гј Г±ГІГҐГЇГҐГ­ГЁ
 		int res = 0;
 		int st;
 		while (j != 0) {
@@ -102,7 +103,7 @@ public class BitArray {
 		}
 
 		if (res < 0)
-			return -1; // Проверка что не выходит за пределы
+			return -1; // ГЏГ°Г®ГўГҐГ°ГЄГ  Г·ГІГ® Г­ГҐ ГўГ»ГµГ®Г¤ГЁГІ Г§Г  ГЇГ°ГҐГ¤ГҐГ«Г»
 		return res;
 	}
 
