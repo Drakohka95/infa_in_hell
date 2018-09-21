@@ -2,7 +2,7 @@ public class Test {
 
 	public static void main(String[] args) {
 
-		BitArray a = new BitArray(10); // Созданный массив заполнен нулями
+		BitArray a = new BitArray(10); // Г‘Г®Г§Г¤Г Г­Г­Г»Г© Г¬Г Г±Г±ГЁГў Г§Г ГЇГ®Г«Г­ГҐГ­ Г­ГіГ«ГїГ¬ГЁ
 
 		// b.insert(1,1);
 
@@ -27,6 +27,8 @@ public class Test {
 
 		int e = a.takeout(2);
 		System.out.println("We take " + e);
+		
+		System.out.println("Just add this message for test))");
 
 	}
 
